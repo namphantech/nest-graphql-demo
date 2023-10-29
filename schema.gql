@@ -1,0 +1,60 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  """Example field (placeholder)"""
+  id: Int!
+  name: String!
+  phoneNumber: String!
+  status: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+  pets: [Pet!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Pet {
+  id: Int!
+  name: String!
+  type: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+  owner: User!
+}
+
+type Query {
+  pets: [Pet!]!
+  getPet(id: Int!): Pet!
+  users: [User!]!
+  user(id: Int!): User!
+}
+
+type Mutation {
+  createPet(createPet: CreatePetDto!): Pet!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+}
+
+input CreatePetDto {
+  name: String!
+  type: String!
+}
+
+input CreateUserInput {
+  name: String!
+  phoneNumber: Float!
+  status: String!
+}
+
+input UpdateUserInput {
+  name: String
+  phoneNumber: Float
+  status: String
+  id: Int!
+}
